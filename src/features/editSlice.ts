@@ -15,7 +15,11 @@ export const editSlice = createSlice({
     initialState,
     reducers:{
         setEditInfo: (state, action: PayloadAction<EditInfo>) => {
-            if (state) Object.assign(state, action.payload)
+            if (state) {
+                action.payload.crosses.sort((a,b) => (a.pos.id - b.pos.id))
+                action.payload.arms.sort((a,b) => (a.pos.id - b.pos.id))
+                Object.assign(state, action.payload)
+            }
         }
     }
 })

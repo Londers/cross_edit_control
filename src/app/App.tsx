@@ -51,28 +51,29 @@ function App() {
         }).catch((error) => {
             window.alert(error.message)
         })
-    }, [dispatch, refresh])
+    }, [dispatch, forKickInfo.arms, forKickInfo.crosses, refresh])
 
     return (
         <div className="App">
-            <div style={{display: "inline-flex", width: "100%", fontSize: 30}}>
+            <div style={{width: "98%", margin: "10px 1% 0 1%", textAlign: "left"}}>
+            <Button variant="outlined" onClick={handleRefresh} style={{marginRight: "15px"}}>
+                Обновить
+            </Button>
+            <Button variant="outlined" onClick={handleKick}>
+                Отключить
+            </Button>
+        </div>
+            <div style={{display: "inline-flex", width: "100%", fontSize: 30, marginBottom: "1%"}}>
                 <div style={{width: "50%"}}>ДК</div>
                 <div style={{width: "50%"}}>АРМ ДК</div>
             </div>
-            <div style={{width: "60%", margin: "0 20%"}}>
-                <Button variant="outlined" onClick={handleRefresh}>
-                    Обновить
-                </Button>
-                <Button variant="outlined" onClick={handleKick}>
-                    Отключить
-                </Button>
-            </div>
+
             <div style={{display: "inline-flex", width: "100%"}}>
                 <DkTable engagedDk={editControl.crosses} setSelectedDk={setSelectedDk}/>
                 <DkTable engagedDk={editControl.arms} setSelectedDk={setSelectedArmDk}/>
             </div>
         </div>
-    );
+    )
 }
 
 export default App;
